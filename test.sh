@@ -1,0 +1,1 @@
+curl -XPOST 127.0.0.1:1337/users/ -d '{"email":"FrakenboK@cR4.sh", "name":"FrakenboK"}' -H 'Content-Type: application/json'
