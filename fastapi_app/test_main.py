@@ -25,5 +25,5 @@ def test_get_users():
     data = response.json()
     assert isinstance(data, list)
 
-    assert data[0]["name"] == name
-    assert data[0]["email"] == email
+    assert data[-1]["name"] == name
+    assert data[-1]["email"] == email
