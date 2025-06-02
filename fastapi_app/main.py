@@ -1,15 +1,14 @@
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from database import database, init_db
-import crud
 import schemas
+from database import database
+import crud
 import uvicorn
 
 # @app.on_event is depricated, so added this:
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await database.connect()
-    init_db()
     yield
     await database.disconnect()
 
@@ -24,4 +23,5 @@ async def create_user(user: schemas.UserCreate):
 async def read_users():
     return await crud.get_users()
 
-uvicorn.run(app, host='0.0.0.0', port=1337)
+if __name__ == "__main__":
+    uvicorn.run(app, host='0.0.0.0', port=1337)

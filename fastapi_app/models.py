@@ -1,5 +1,5 @@
 from sqlalchemy import Table, Column, Integer, String
-from database import metadata
+from database import metadata, engine
 
 users = Table(
     "users", metadata,
@@ -7,3 +7,5 @@ users = Table(
     Column("name", String(50)),
     Column("email", String(50), unique=True)
 )
+
+metadata.create_all(engine)
